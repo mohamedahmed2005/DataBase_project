@@ -1,22 +1,19 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
-Public Class Form1
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class AddEdit_Customer
+    Private Sub AddEdit_Customer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
     Private Sub RegisterUser()
-        Dim connStr As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=False"
-        Using conn As New SqlConnection(connStr)
+        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
-                            (Username, Password, Email, FullName, NationalID, PhoneNumber, Address, Nationality, Gender, DateOfBirth, BloodType, MaritalStatus, CustomerStatus, AccountCreationDate, AccountUpdateDate)
+                            (FullName, NationalID, PhoneNumber, Address, Nationality, Gender, DateOfBirth, BloodType, MaritalStatus, CustomerStatus, AccountCreationDate, AccountUpdateDate)
                             VALUES
-                            (@Username, @Password, @Email, @FullName, @NationalID, @PhoneNumber, @Address, @Nationality, @Gender, @DateOfBirth, @BloodType, @MaritalStatus, @CustomerStatus, @CreationDate, @UpdateDate)"
+                            (@FullName, @NationalID, @PhoneNumber, @Address, @Nationality, @Gender, @DateOfBirth, @BloodType, @MaritalStatus, @CustomerStatus, @CreationDate, @UpdateDate)"
 
             Dim cmd As New SqlCommand(query, conn)
 
-            cmd.Parameters.AddWithValue("@Username", txtUsername.Text.Trim())
-            cmd.Parameters.AddWithValue("@Password", txtPassword.Text)
-            cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim())
             cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim())
             cmd.Parameters.AddWithValue("@NationalID", Convert.ToInt32(txtNationalID.Text.Trim()))
             cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text.Trim())
@@ -40,12 +37,8 @@ Public Class Form1
         End Using
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Submitbtn.Click
         If String.IsNullOrWhiteSpace(txtFullName.Text) OrElse
-        String.IsNullOrWhiteSpace(txtUsername.Text) OrElse
-        String.IsNullOrWhiteSpace(txtPassword.Text) OrElse
-        String.IsNullOrWhiteSpace(txtConfirmPassword.Text) OrElse
-        String.IsNullOrWhiteSpace(txtEmail.Text) OrElse
         String.IsNullOrWhiteSpace(txtNationalID.Text) OrElse
         cbGender.SelectedIndex = -1 OrElse
         cbNationality.SelectedIndex = -1 OrElse
@@ -55,17 +48,6 @@ Public Class Form1
             Exit Sub
         End If
 
-        ' Email format check
-        If Not Regex.IsMatch(txtEmail.Text, "^[^@\s]+@[^@\s]+\.[^@\s]+$") Then
-            MessageBox.Show("Invalid email format.")
-            Exit Sub
-        End If
-
-        ' Password match
-        If txtPassword.Text <> txtConfirmPassword.Text Then
-            MessageBox.Show("Passwords do not match.")
-            Exit Sub
-        End If
 
         ' National ID numeric
         Dim nationalId As Integer
@@ -80,19 +62,18 @@ Public Class Form1
             Exit Sub
         End If
 
-        ' Password length
-        If txtPassword.Text.Length < 6 Then
-            MessageBox.Show("Password must be at least 6 characters.")
-            Exit Sub
-        End If
-
         ' Insert into DB
         RegisterUser()
 
+        Application.Exit()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Cancelbtn.Click
+        Dim signInForm As New SignIn()
+        signInForm.Show()
+        Me.Hide() ' Optional: hides the current form
     End Sub
+
+
+
 End Class
-

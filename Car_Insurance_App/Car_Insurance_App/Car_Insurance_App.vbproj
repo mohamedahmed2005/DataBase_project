@@ -73,17 +73,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SignUp.vb">
-      <SubType>Form</SubType>
+    <Compile Include="AddEdit_Customer.Designer.vb">
+      <DependentUpon>AddEdit_Customer.vb</DependentUpon>
     </Compile>
-    <Compile Include="SignUp.Designer.vb">
-      <DependentUpon>SignUp.vb</DependentUpon>
+    <Compile Include="AddEdit_Customer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -103,8 +103,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SignUp.resx">
-      <DependentUpon>SignUp.vb</DependentUpon>
+    <EmbeddedResource Include="AddEdit_Customer.resx">
+      <DependentUpon>AddEdit_Customer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -1,26 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\",
+  "WorkspaceRootPath": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\users\\victus\\source\\repos\\database_project\\car_insurance_app\\car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Github repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Github repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Car_Insurance_App||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Github repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\signin.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\signup.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\signup.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\github repos\\database_project\\car_insurance_app\\car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\signup.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\signup.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\my project\\application.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\my project\\application.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\github repos\\database_project\\car_insurance_app\\car_insurance_app\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|6185191f-1008-4fb2-a715-3a4e4f27e610"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +32,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Car_Insurance_App",
+              "DocumentMoniker": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\Car_Insurance_App.vbproj",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\Car_Insurance_App.vbproj",
+              "ToolTip": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\Car_Insurance_App.vbproj",
+              "RelativeToolTip": "Car_Insurance_App\\Car_Insurance_App.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-14T22:27:15.605Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Application.Designer.vb",
-              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\My Project\\Application.Designer.vb",
-              "RelativeDocumentMoniker": "Car_Insurance_App\\My Project\\Application.Designer.vb",
-              "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\My Project\\Application.Designer.vb",
-              "RelativeToolTip": "Car_Insurance_App\\My Project\\Application.Designer.vb",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAnwCMAAAAPAAAAAAAAAA==",
+              "Title": "AddEdit_Customer.vb",
+              "DocumentMoniker": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Customer.vb",
+              "ToolTip": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
+              "RelativeToolTip": "Car_Insurance_App\\AddEdit_Customer.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-14T17:09:59.618Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SignIn.vb",
-              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
-              "RelativeDocumentMoniker": "Car_Insurance_App\\SignIn.vb",
-              "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
-              "RelativeToolTip": "Car_Insurance_App\\SignIn.vb",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwDUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-14T17:03:49.784Z",
+              "WhenOpened": "2025-05-14T21:38:12.788Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SignIn.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
-              "RelativeDocumentMoniker": "Car_Insurance_App\\SignIn.vb",
-              "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb [Design]",
-              "RelativeToolTip": "Car_Insurance_App\\SignIn.vb [Design]",
+              "Title": "AddEdit_Customer.vb [Design]",
+              "DocumentMoniker": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Customer.vb",
+              "ToolTip": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb [Design]",
+              "RelativeToolTip": "Car_Insurance_App\\AddEdit_Customer.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-14T17:02:26.2Z"
+              "WhenOpened": "2025-05-14T21:38:09.462Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SignUp.vb",
-              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignUp.vb",
-              "RelativeDocumentMoniker": "Car_Insurance_App\\SignUp.vb",
-              "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignUp.vb",
-              "RelativeToolTip": "Car_Insurance_App\\SignUp.vb",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAgwFsAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SignIn.vb",
+              "DocumentMoniker": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\SignIn.vb",
+              "ToolTip": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb*",
+              "RelativeToolTip": "Car_Insurance_App\\SignIn.vb*",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-14T16:16:03.355Z"
+              "WhenOpened": "2025-05-14T17:51:16.025Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SignUp.vb [Design]",
-              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignUp.vb",
-              "RelativeDocumentMoniker": "Car_Insurance_App\\SignUp.vb",
-              "ToolTip": "C:\\Users\\VICTUS\\Source\\Repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignUp.vb [Design]",
-              "RelativeToolTip": "Car_Insurance_App\\SignUp.vb [Design]",
+              "Title": "SignIn.vb [Design]",
+              "DocumentMoniker": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\SignIn.vb",
+              "ToolTip": "C:\\Github repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb [Design]*",
+              "RelativeToolTip": "Car_Insurance_App\\SignIn.vb [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-14T13:01:53.403Z"
+              "WhenOpened": "2025-05-14T17:02:26.2Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

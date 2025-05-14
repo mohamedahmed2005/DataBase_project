@@ -24,87 +24,88 @@ Partial Class SignIn
     Private Sub InitializeComponent()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.lable1 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.SignUp = New System.Windows.Forms.Button()
+        Me.Cancel = New System.Windows.Forms.Button()
         Me.Login = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(558, 212)
+        Me.txtPassword.Location = New System.Drawing.Point(237, 213)
         Me.txtPassword.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(229, 22)
+        Me.txtPassword.Size = New System.Drawing.Size(257, 26)
         Me.txtPassword.TabIndex = 15
         '
         'Label6
         '
-        Me.Label6.Location = New System.Drawing.Point(439, 214)
+        Me.Label6.Location = New System.Drawing.Point(103, 216)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(87, 18)
+        Me.Label6.Size = New System.Drawing.Size(98, 22)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "Password"
         '
-        'txtEmail
+        'txtUsername
         '
-        Me.txtEmail.Location = New System.Drawing.Point(137, 213)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(229, 22)
-        Me.txtEmail.TabIndex = 13
+        Me.txtUsername.Location = New System.Drawing.Point(237, 163)
+        Me.txtUsername.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(257, 26)
+        Me.txtUsername.TabIndex = 13
         '
-        'Label4
+        'lable1
         '
-        Me.Label4.Location = New System.Drawing.Point(18, 216)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(82, 18)
-        Me.Label4.TabIndex = 12
-        Me.Label4.Text = "Email"
+        Me.lable1.Location = New System.Drawing.Point(103, 167)
+        Me.lable1.Name = "lable1"
+        Me.lable1.Size = New System.Drawing.Size(92, 22)
+        Me.lable1.TabIndex = 12
+        Me.lable1.Text = "Username"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(364, 42)
+        Me.Label1.Location = New System.Drawing.Point(410, 52)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(142, 46)
+        Me.Label1.Size = New System.Drawing.Size(170, 55)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Sign in"
         '
-        'SignUp
+        'Cancel
         '
-        Me.SignUp.Location = New System.Drawing.Point(21, 413)
-        Me.SignUp.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.SignUp.Name = "SignUp"
-        Me.SignUp.Size = New System.Drawing.Size(116, 46)
-        Me.SignUp.TabIndex = 28
-        Me.SignUp.Text = "SignUp"
-        Me.SignUp.UseVisualStyleBackColor = True
+        Me.Cancel.Location = New System.Drawing.Point(536, 322)
+        Me.Cancel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Cancel.Name = "Cancel"
+        Me.Cancel.Size = New System.Drawing.Size(130, 58)
+        Me.Cancel.TabIndex = 28
+        Me.Cancel.Text = "Cancel"
+        Me.Cancel.UseVisualStyleBackColor = True
         '
         'Login
         '
-        Me.Login.Location = New System.Drawing.Point(803, 413)
+        Me.Login.Location = New System.Drawing.Point(308, 322)
         Me.Login.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Login.Name = "Login"
-        Me.Login.Size = New System.Drawing.Size(116, 46)
+        Me.Login.Size = New System.Drawing.Size(130, 58)
         Me.Login.TabIndex = 27
         Me.Login.Text = "Submit"
         Me.Login.UseVisualStyleBackColor = True
         '
         'SignIn
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(931, 470)
-        Me.Controls.Add(Me.SignUp)
+        Me.ClientSize = New System.Drawing.Size(1047, 588)
+        Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.Login)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.txtEmail)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.txtUsername)
+        Me.Controls.Add(Me.lable1)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "SignIn"
         Me.Text = "SignIn"
         Me.ResumeLayout(False)
@@ -114,9 +115,9 @@ Partial Class SignIn
 
     Friend WithEvents txtPassword As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents txtEmail As TextBox
-    Friend WithEvents Label4 As Label
+    Friend WithEvents txtUsername As TextBox
+    Friend WithEvents lable1 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents SignUp As Button
+    Friend WithEvents Cancel As Button
     Friend WithEvents Login As Button
 End Class

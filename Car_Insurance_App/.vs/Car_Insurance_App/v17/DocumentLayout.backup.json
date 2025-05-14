@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Owner\\Desktop\\Car_Insurance_App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\Owner\\Desktop\\Car_Insurance_App\\car_insurance_app\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\Owner\\Desktop\\Car_Insurance_App\\Car_Insurance_App\\Form1.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\Form1.vb",
+              "ToolTip": "C:\\Users\\Owner\\Desktop\\Car_Insurance_App\\Car_Insurance_App\\Form1.vb [Design]*",
+              "RelativeToolTip": "Car_Insurance_App\\Form1.vb [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-05-14T13:01:53.403Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

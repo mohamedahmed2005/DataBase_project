@@ -41,6 +41,8 @@ Partial Class AddEdit_Customer
         Me.cbBloodType = New System.Windows.Forms.ComboBox()
         Me.Submitbtn = New System.Windows.Forms.Button()
         Me.Cancelbtn = New System.Windows.Forms.Button()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -210,12 +212,30 @@ Partial Class AddEdit_Customer
         Me.Cancelbtn.Text = "Cancel"
         Me.Cancelbtn.UseVisualStyleBackColor = True
         '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(182, 339)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(257, 26)
+        Me.txtEmail.TabIndex = 28
+        '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(78, 342)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(110, 22)
+        Me.Label3.TabIndex = 27
+        Me.Label3.Text = "Email"
+        '
         'AddEdit_Customer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1054, 660)
+        Me.Controls.Add(Me.txtEmail)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Cancelbtn)
         Me.Controls.Add(Me.Submitbtn)
         Me.Controls.Add(Me.Label13)
@@ -262,4 +282,6 @@ Partial Class AddEdit_Customer
     Friend WithEvents cbBloodType As ComboBox
     Friend WithEvents Submitbtn As Button
     Friend WithEvents Cancelbtn As Button
+    Friend WithEvents txtEmail As TextBox
+    Friend WithEvents Label3 As Label
 End Class

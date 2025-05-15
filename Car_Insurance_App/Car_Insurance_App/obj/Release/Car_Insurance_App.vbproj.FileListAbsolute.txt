@@ -11,3 +11,4 @@ C:\Github repos\DataBase_project\Car_Insurance_App\Car_Insurance_App\obj\Release
 C:\Github repos\DataBase_project\Car_Insurance_App\Car_Insurance_App\obj\Release\Car_Insurance_App.exe
 C:\Github repos\DataBase_project\Car_Insurance_App\Car_Insurance_App\obj\Release\Car_Insurance_App.xml
 C:\Github repos\DataBase_project\Car_Insurance_App\Car_Insurance_App\obj\Release\Car_Insurance_App.pdb
+C:\Github repos\DataBase_project\Car_Insurance_App\Car_Insurance_App\obj\Release\Car_Insurance_App.Dashboard.resources

@@ -4,59 +4,47 @@ Imports System.Text.RegularExpressions
 Public Class AddEdit_Customer
 
     Private _isEditMode As Boolean = False
+    Private _customerID As Integer = -1
 
     Private Sub AddEdit_Customer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If _isEditMode Then
             Label1.Text = "Edit Customer"
             Submitbtn.Text = "Update"
-            txtNationalID.ReadOnly = True ' Prevent NationalID editing in edit mode
+            txtNationalID.ReadOnly = True
         Else
             Label1.Text = "Add Customer"
-            Submitbtn.Text = "Register"
+            Submitbtn.Text = "Add"
             txtNationalID.ReadOnly = False
         End If
     End Sub
 
-    ' Call this method to switch the form to Edit mode and load data
-    Public Sub LoadCustomerData(nationalId As Integer)
+    Public Sub LoadCustomerData(customerId As Integer)
         _isEditMode = True
+        _customerID = customerId
+
         'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+
         Using conn As New SqlConnection(connectionString)
-            Dim query As String = "SELECT * FROM Customer WHERE NationalID = @NationalID"
+            Dim query As String = "SELECT * FROM Customer WHERE CustomerID = @CustomerID"
             Dim cmd As New SqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@NationalID", nationalId)
+            cmd.Parameters.AddWithValue("@CustomerID", customerId)
 
             Try
                 conn.Open()
                 Using reader = cmd.ExecuteReader()
                     If reader.Read() Then
                         txtNationalID.Text = reader("NationalID").ToString()
-
-                        ' Check for NULL values before assigning to controls
-                        txtFullName.Text = If(reader("FullName") Is DBNull.Value, "", reader("FullName").ToString())
-                        txtPhoneNumber.Text = If(reader("PhoneNumber") Is DBNull.Value, "", reader("PhoneNumber").ToString())
-                        txtAddress.Text = If(reader("Address") Is DBNull.Value, "", reader("Address").ToString())
-
-                        ' For ComboBoxes, only set if value is not null
-                        If reader("Nationality") IsNot DBNull.Value Then
-                            cbNationality.SelectedItem = reader("Nationality").ToString()
-                        End If
-
-                        If reader("Gender") IsNot DBNull.Value Then
-                            cbGender.SelectedItem = reader("Gender").ToString()
-                        End If
-
-                        ' For DateTimePicker, only set if value is not null
-                        If reader("DateOfBirth") IsNot DBNull.Value Then
-                            dtpDOB.Value = Convert.ToDateTime(reader("DateOfBirth"))
-                        End If
-
-                        If reader("BloodType") IsNot DBNull.Value Then
-                            cbBloodType.SelectedItem = reader("BloodType").ToString()
-                        End If
+                        txtFullName.Text = reader("FullName").ToString()
+                        txtPhoneNumber.Text = reader("PhoneNumber").ToString()
+                        txtAddress.Text = reader("Address").ToString()
+                        txtEmail.Text = reader("Email").ToString()
+                        cbNationality.SelectedItem = reader("Nationality").ToString()
+                        cbGender.SelectedItem = reader("Gender").ToString()
+                        dtpDOB.Value = Convert.ToDateTime(reader("DateOfBirth"))
+                        cbBloodType.SelectedItem = reader("BloodType").ToString()
                     Else
                         MessageBox.Show("Customer not found.")
                         Me.Close()
@@ -71,14 +59,15 @@ Public Class AddEdit_Customer
 
     Private Sub RegisterUser()
         'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
-                            (FullName, NationalID, PhoneNumber, Address, Nationality, Gender, DateOfBirth, BloodType, MaritalStatus, CustomerStatus, AccountCreationDate, AccountUpdateDate)
-                            VALUES
-                            (@FullName, @NationalID, @PhoneNumber, @Address, @Nationality, @Gender, @DateOfBirth, @BloodType, @MaritalStatus, @CustomerStatus, @CreationDate, @UpdateDate)"
+                (FullName, NationalID, PhoneNumber, Address, Email, Nationality, Gender, DateOfBirth, BloodType, CustomerStatus, AccountCreationDate, AccountUpdateDate)
+                VALUES
+                (@FullName, @NationalID, @PhoneNumber, @Address, @Email, @Nationality, @Gender, @DateOfBirth, @BloodType, @CustomerStatus, @CreationDate, @UpdateDate)"
 
             Dim cmd As New SqlCommand(query, conn)
 
@@ -86,11 +75,11 @@ Public Class AddEdit_Customer
             cmd.Parameters.AddWithValue("@NationalID", Convert.ToInt32(txtNationalID.Text.Trim()))
             cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text.Trim())
             cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim())
+            cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim())
             cmd.Parameters.AddWithValue("@Nationality", cbNationality.SelectedItem.ToString())
             cmd.Parameters.AddWithValue("@Gender", cbGender.SelectedItem.ToString())
             cmd.Parameters.AddWithValue("@DateOfBirth", dtpDOB.Value)
             cmd.Parameters.AddWithValue("@BloodType", cbBloodType.SelectedItem.ToString())
-            cmd.Parameters.AddWithValue("@MaritalStatus", "Single")
             cmd.Parameters.AddWithValue("@CustomerStatus", "Active")
             cmd.Parameters.AddWithValue("@CreationDate", DateTime.Now)
             cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now)
@@ -106,32 +95,41 @@ Public Class AddEdit_Customer
     End Sub
 
     Private Sub UpdateCustomer()
+        If _customerID = -1 Then
+            MessageBox.Show("Customer ID is missing.")
+            Return
+        End If
+
         'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "UPDATE Customer SET 
-                                FullName = @FullName, 
-                                PhoneNumber = @PhoneNumber, 
-                                Address = @Address, 
-                                Nationality = @Nationality, 
-                                Gender = @Gender, 
-                                DateOfBirth = @DateOfBirth, 
-                                BloodType = @BloodType, 
-                                AccountUpdateDate = @UpdateDate
-                             WHERE NationalID = @NationalID"
+                FullName = @FullName, 
+                PhoneNumber = @PhoneNumber, 
+                Address = @Address, 
+                Email = @Email,
+                Nationality = @Nationality, 
+                Gender = @Gender, 
+                DateOfBirth = @DateOfBirth, 
+                BloodType = @BloodType, 
+                AccountUpdateDate = @UpdateDate
+                WHERE CustomerID = @CustomerID"
 
             Dim cmd As New SqlCommand(query, conn)
+
             cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim())
             cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text.Trim())
             cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim())
+            cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim())
             cmd.Parameters.AddWithValue("@Nationality", cbNationality.SelectedItem.ToString())
             cmd.Parameters.AddWithValue("@Gender", cbGender.SelectedItem.ToString())
             cmd.Parameters.AddWithValue("@DateOfBirth", dtpDOB.Value)
             cmd.Parameters.AddWithValue("@BloodType", cbBloodType.SelectedItem.ToString())
             cmd.Parameters.AddWithValue("@UpdateDate", DateTime.Now)
-            cmd.Parameters.AddWithValue("@NationalID", Convert.ToInt32(txtNationalID.Text.Trim()))
+            cmd.Parameters.AddWithValue("@CustomerID", _customerID)
 
             Try
                 conn.Open()
@@ -158,9 +156,9 @@ Public Class AddEdit_Customer
             Return
         End If
 
-        ' NationalID numeric check
+        ' National ID check
         Dim nationalId As Integer
-        If Not Integer.TryParse(txtNationalID.Text, nationalId) Then
+        If Not Integer.TryParse(txtNationalID.Text.Trim(), nationalId) Then
             MessageBox.Show("National ID must be a number.")
             Return
         End If
@@ -171,13 +169,22 @@ Public Class AddEdit_Customer
             Return
         End If
 
+        ' Email format check
+        Dim email As String = txtEmail.Text.Trim()
+        Dim emailPattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        If Not Regex.IsMatch(email, emailPattern) Then
+            MessageBox.Show("Please enter a valid email address.")
+            Return
+        End If
+
+        ' Register or Update
         If _isEditMode Then
             UpdateCustomer()
         Else
             RegisterUser()
         End If
 
-        ' After operation, return to Dashboard
+        ' Return to Dashboard
         Dim dashboardForm As New Dashboard("admin") ' Replace with actual username
         dashboardForm.Show()
         Me.Hide()

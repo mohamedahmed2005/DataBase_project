@@ -28,35 +28,35 @@ Public Class Dashboard
 
     ' Open Edit Customer form after checking existence
     Private Sub UpdateCustomer_Click(sender As Object, e As EventArgs) Handles UpdateCustomer.Click
-        Dim input = InputBox("Enter NationalID of customer to update:", "Edit Customer")
-        Dim nationalId As Integer
-        If Integer.TryParse(input, nationalId) Then
-            If CustomerExists(nationalId) Then
+        Dim input = InputBox("Enter Customer ID of customer to update:", "Edit Customer")
+        Dim customerId As Integer
+        If Integer.TryParse(input, customerId) Then
+            If CustomerExists(customerId) Then
                 Dim addEditForm As New AddEdit_Customer()
                 addEditForm.SetModeToEdit()
-                addEditForm.LoadCustomerData(nationalId)
+                addEditForm.LoadCustomerData(customerId)
                 addEditForm.Show()
                 Me.Hide()
             Else
-                MessageBox.Show("Customer with NationalID " & nationalId & " does not exist.")
+                MessageBox.Show("Customer with Customer ID " & customerId & " does not exist.")
             End If
         Else
-            MessageBox.Show("Invalid NationalID entered.")
+            MessageBox.Show("Invalid Customer ID entered.")
         End If
     End Sub
 
     ' Check if customer exists in database
-    Private Function CustomerExists(nationalId As Integer) As Boolean
+    Private Function CustomerExists(customerID As Integer) As Boolean
         Dim exists As Boolean = False
 
         'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
         Using conn As New SqlConnection(connectionString)
-            Dim query As String = "SELECT COUNT(*) FROM Customer WHERE NationalID = @NationalID"
+            Dim query As String = "SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID"
             Dim cmd As New SqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@NationalID", nationalId)
+            cmd.Parameters.AddWithValue("@CustomerID", customerID)
 
             Try
                 conn.Open()

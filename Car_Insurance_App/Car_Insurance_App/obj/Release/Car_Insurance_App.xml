@@ -22,5 +22,20 @@ Car_Insurance_App
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:Car_Insurance_App.My.Resources.Resources.eye">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Car_Insurance_App.My.Resources.Resources.eye_slash">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Car_Insurance_App.My.Resources.Resources.String1">
+<summary>
+  Looks up a localized string similar to .
+</summary>
+</member>
 </members>
 </doc>

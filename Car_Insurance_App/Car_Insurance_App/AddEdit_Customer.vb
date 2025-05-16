@@ -23,9 +23,9 @@ Public Class AddEdit_Customer
         _customerID = customerId
 
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT * FROM Customer WHERE CustomerID = @CustomerID"
@@ -36,15 +36,20 @@ Public Class AddEdit_Customer
                 conn.Open()
                 Using reader = cmd.ExecuteReader()
                     If reader.Read() Then
-                        txtNationalID.Text = reader("NationalID").ToString()
-                        txtFullName.Text = reader("FullName").ToString()
-                        txtPhoneNumber.Text = reader("PhoneNumber").ToString()
-                        txtAddress.Text = reader("Address").ToString()
-                        txtEmail.Text = reader("Email").ToString()
-                        cbNationality.SelectedItem = reader("Nationality").ToString()
-                        cbGender.SelectedItem = reader("Gender").ToString()
-                        dtpDOB.Value = Convert.ToDateTime(reader("DateOfBirth"))
-                        cbBloodType.SelectedItem = reader("BloodType").ToString()
+                        txtNationalID.Text = If(IsDBNull(reader("NationalID")), "", reader("NationalID").ToString())
+                        txtFullName.Text = If(IsDBNull(reader("FullName")), "", reader("FullName").ToString())
+                        txtPhoneNumber.Text = If(IsDBNull(reader("PhoneNumber")), "", reader("PhoneNumber").ToString())
+                        txtAddress.Text = If(IsDBNull(reader("Address")), "", reader("Address").ToString())
+                        txtEmail.Text = If(IsDBNull(reader("Email")), "", reader("Email").ToString())
+                        cbNationality.SelectedItem = If(IsDBNull(reader("Nationality")), "", reader("Nationality").ToString())
+                        cbGender.SelectedItem = If(IsDBNull(reader("Gender")), "", reader("Gender").ToString())
+
+                        If Not IsDBNull(reader("DateOfBirth")) Then
+                            dtpDOB.Value = Convert.ToDateTime(reader("DateOfBirth"))
+                        End If
+
+                        cbBloodType.SelectedItem = If(IsDBNull(reader("BloodType")), "", reader("BloodType").ToString())
+
                     Else
                         MessageBox.Show("Customer not found.")
                         Me.Close()
@@ -59,9 +64,9 @@ Public Class AddEdit_Customer
 
     Private Sub RegisterUser()
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
@@ -101,9 +106,9 @@ Public Class AddEdit_Customer
         End If
 
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "UPDATE Customer SET 
@@ -185,13 +190,13 @@ Public Class AddEdit_Customer
         End If
 
         ' Return to Dashboard
-        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username
+        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username if dynamic
         dashboardForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub Cancelbtn_Click(sender As Object, e As EventArgs) Handles Cancelbtn.Click
-        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username
+        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username if dynamic
         dashboardForm.Show()
         Me.Hide()
     End Sub

@@ -25,6 +25,9 @@ Partial Class Dashboard
         Me.AddCustomer = New System.Windows.Forms.Button()
         Me.UpdateCustomer = New System.Windows.Forms.Button()
         Me.Welcome = New System.Windows.Forms.Label()
+        Me.DeleteCustomer = New System.Windows.Forms.Button()
+        Me.AddCar = New System.Windows.Forms.Button()
+        Me.EditCar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'AddCustomer
@@ -55,11 +58,41 @@ Partial Class Dashboard
         Me.Welcome.TabIndex = 2
         Me.Welcome.Text = "Welcome ""Username"""
         '
+        'DeleteCustomer
+        '
+        Me.DeleteCustomer.Location = New System.Drawing.Point(12, 206)
+        Me.DeleteCustomer.Name = "DeleteCustomer"
+        Me.DeleteCustomer.Size = New System.Drawing.Size(135, 23)
+        Me.DeleteCustomer.TabIndex = 3
+        Me.DeleteCustomer.Text = "Delete Customer"
+        Me.DeleteCustomer.UseVisualStyleBackColor = True
+        '
+        'AddCar
+        '
+        Me.AddCar.Location = New System.Drawing.Point(280, 109)
+        Me.AddCar.Name = "AddCar"
+        Me.AddCar.Size = New System.Drawing.Size(133, 23)
+        Me.AddCar.TabIndex = 4
+        Me.AddCar.Text = "Add Car"
+        Me.AddCar.UseVisualStyleBackColor = True
+        '
+        'EditCar
+        '
+        Me.EditCar.Location = New System.Drawing.Point(280, 159)
+        Me.EditCar.Name = "EditCar"
+        Me.EditCar.Size = New System.Drawing.Size(133, 23)
+        Me.EditCar.TabIndex = 5
+        Me.EditCar.Text = "Edit car"
+        Me.EditCar.UseVisualStyleBackColor = True
+        '
         'Dashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.EditCar)
+        Me.Controls.Add(Me.AddCar)
+        Me.Controls.Add(Me.DeleteCustomer)
         Me.Controls.Add(Me.Welcome)
         Me.Controls.Add(Me.UpdateCustomer)
         Me.Controls.Add(Me.AddCustomer)
@@ -72,4 +105,7 @@ Partial Class Dashboard
     Friend WithEvents AddCustomer As Button
     Friend WithEvents UpdateCustomer As Button
     Friend WithEvents Welcome As Label
+    Friend WithEvents DeleteCustomer As Button
+    Friend WithEvents AddCar As Button
+    Friend WithEvents EditCar As Button
 End Class

@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEdit_Car.Designer.vb">
+      <DependentUpon>AddEdit_Car.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddEdit_Car.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AddEdit_Customer.Designer.vb">
       <DependentUpon>AddEdit_Customer.vb</DependentUpon>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddEdit_Car.resx">
+      <DependentUpon>AddEdit_Car.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEdit_Customer.resx">
       <DependentUpon>AddEdit_Customer.vb</DependentUpon>
     </EmbeddedResource>

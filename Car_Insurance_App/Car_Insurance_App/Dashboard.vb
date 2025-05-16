@@ -3,67 +3,150 @@
 Public Class Dashboard
     Private _username As String
 
-    ' Constructor that accepts the username
+    ' Constructor accepting username
     Public Sub New(username As String)
         InitializeComponent()
         _username = username
     End Sub
 
-    ' On load, update the Welcome label
     Private Sub Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Welcome.Text = "Welcome " & _username
     End Sub
 
-    ' Exit application on form close
     Private Sub Dashboard_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Application.Exit()
     End Sub
 
-    ' Open Add Customer form
+    ' -------------------- CUSTOMER BUTTONS --------------------
+
     Private Sub AddCustomer_Click(sender As Object, e As EventArgs) Handles AddCustomer.Click
-        Dim addEditForm As New AddEdit_Customer()
-        addEditForm.Show()
+        Dim addEditCustomerForm As New AddEdit_Customer()
+        addEditCustomerForm.Show()
         Me.Hide()
     End Sub
 
-    ' Open Edit Customer form after checking existence
     Private Sub UpdateCustomer_Click(sender As Object, e As EventArgs) Handles UpdateCustomer.Click
-        Dim input = InputBox("Enter Customer ID of customer to update:", "Edit Customer")
-        Dim customerId As Integer
-        If Integer.TryParse(input, customerId) Then
-            If CustomerExists(customerId) Then
-                Dim addEditForm As New AddEdit_Customer()
-                addEditForm.SetModeToEdit()
-                addEditForm.LoadCustomerData(customerId)
-                addEditForm.Show()
-                Me.Hide()
-            Else
-                MessageBox.Show("Customer with Customer ID " & customerId & " does not exist.")
-            End If
-        Else
-            MessageBox.Show("Invalid Customer ID entered.")
-        End If
+        MessageBox.Show("Update Customer feature not implemented yet.")
     End Sub
 
-    ' Check if customer exists in database
-    Private Function CustomerExists(customerID As Integer) As Boolean
-        Dim exists As Boolean = False
+    Private Sub DeleteCustomer_Click(sender As Object, e As EventArgs) Handles DeleteCustomer.Click
+        MessageBox.Show("Delete Customer feature not implemented yet.")
+    End Sub
 
-        'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+    ' -------------------- CAR BUTTONS --------------------
+
+    Private Sub AddCar_Click(sender As Object, e As EventArgs) Handles AddCar.Click
+        Dim customerID As String = InputBox("Enter the Customer ID for this car:", "Add Car")
+
+        If String.IsNullOrWhiteSpace(customerID) Then
+            MessageBox.Show("Customer ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If Not CustomerExists(customerID) Then
+            MessageBox.Show($"Customer with ID '{customerID}' does not exist.", "Invalid Customer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Dim addEditCarForm As New AddEdit_Car()
+        addEditCarForm.SetCustomerID(customerID)
+        addEditCarForm.Show()
+    End Sub
+
+    Private Sub EditCar_Click(sender As Object, e As EventArgs) Handles EditCar.Click
+        Dim customerID As String = InputBox("Enter the Customer ID:", "Edit Car")
+
+        If String.IsNullOrWhiteSpace(customerID) Then
+            MessageBox.Show("Customer ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If Not CustomerExists(customerID) Then
+            MessageBox.Show($"Customer with ID '{customerID}' does not exist.", "Invalid Customer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Dim CarID As String = InputBox("Enter the Car ID of the car to edit:", "Edit Car")
+
+        If String.IsNullOrWhiteSpace(CarID) Then
+            MessageBox.Show("Car ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim carIDInt As Integer
+        If Not Integer.TryParse(CarID, carIDInt) Then
+            MessageBox.Show("Car ID must be a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If Not CarExistsForCustomer(carIDInt, customerID) Then
+            MessageBox.Show($"Car with Car ID '{carIDInt}' does not exist for Customer ID '{customerID}'.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Dim addEditCarForm As New AddEdit_Car()
+        addEditCarForm.SetCustomerID(customerID)
+        addEditCarForm.SetEditMode()
+        addEditCarForm.LoadCarData(CarID)
+        addEditCarForm.Show()
+        Me.Hide()
+    End Sub
+
+    ' -------------------- HELPER METHODS --------------------
+
+    Private Function CarExists(carID As Integer) As Boolean
+        Dim exists As Boolean = False
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         Using conn As New SqlConnection(connectionString)
-            Dim query As String = "SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID"
+            Dim query As String = "SELECT COUNT(*) FROM Car WHERE CarID = @CarID"
             Dim cmd As New SqlCommand(query, conn)
-            cmd.Parameters.AddWithValue("@CustomerID", customerID)
+            cmd.Parameters.AddWithValue("@CarID", carID)
 
             Try
                 conn.Open()
                 Dim count = Convert.ToInt32(cmd.ExecuteScalar())
                 exists = (count > 0)
             Catch ex As Exception
-                MessageBox.Show("Database error: " & ex.Message)
+                MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+        Return exists
+    End Function
+
+    Private Function CarExistsForCustomer(carID As Integer, customerID As String) As Boolean
+        Dim exists As Boolean = False
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Using conn As New SqlConnection(connectionString)
+            Dim query As String = "SELECT COUNT(*) FROM Ownership WHERE CarID = @CarID AND CustomerID = @CustomerID"
+            Dim cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@CarID", carID)
+            cmd.Parameters.AddWithValue("@CustomerID", customerID.Trim())
+
+            Try
+                conn.Open()
+                Dim count = Convert.ToInt32(cmd.ExecuteScalar())
+                exists = (count > 0)
+            Catch ex As Exception
+                MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End Using
+        Return exists
+    End Function
+
+    Private Function CustomerExists(customerID As String) As Boolean
+        Dim exists As Boolean = False
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Using conn As New SqlConnection(connectionString)
+            Dim query As String = "SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID"
+            Dim cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@CustomerID", customerID.Trim())
+
+            Try
+                conn.Open()
+                Dim count = Convert.ToInt32(cmd.ExecuteScalar())
+                exists = (count > 0)
+            Catch ex As Exception
+                MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
         Return exists

@@ -595,4 +595,119 @@ Public Class Dashboard
             MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    ' -------------------- Queries --------------------
+    Private Sub RunQuery(query As String, Optional parameters As Dictionary(Of String, Object) = Nothing)
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Using conn As New SqlConnection(connectionString)
+            Using cmd As New SqlCommand(query, conn)
+                If parameters IsNot Nothing Then
+                    For Each param In parameters
+                        cmd.Parameters.AddWithValue(param.Key, param.Value)
+                    Next
+                End If
+
+                Dim adapter As New SqlDataAdapter(cmd)
+                Dim table As New DataTable()
+
+                Try
+                    conn.Open()
+                    adapter.Fill(table)
+
+                    ' Show result in ViewAccident form
+                    Dim resultsForm As New ViewAccident(table)
+                    resultsForm.Show()
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Private Sub btnTotalOwners2017_Click(sender As Object, e As EventArgs) Handles btnTotalOwners2017.Click
+        Dim query As String = "
+    SELECT COUNT(DISTINCT o.CustomerID) AS TotalOwnersInvolved
+    FROM Ownership o
+    INNER JOIN Accident a ON o.CarID = a.CarID
+    WHERE YEAR(a.AccidentDate) = 2017"
+        RunQuery(query)
+    End Sub
+
+    Private Sub btnAhmedMohamedAccidents_Click(sender As Object, e As EventArgs) Handles btnAhmedMohamedAccidents.Click
+        Dim query As String = "
+    SELECT COUNT(DISTINCT a.AccidentID) AS AccidentCount
+    FROM Customer c
+    INNER JOIN Ownership o ON c.CustomerID = o.CustomerID
+    INNER JOIN Car car ON o.CarID = car.CarID
+    INNER JOIN Accident a ON car.CarID = a.CarID
+    WHERE c.FullName = 'Ahmed Mohamed'"
+        RunQuery(query)
+    End Sub
+    Private Sub btnMaxAccidentModel2017_Click(sender As Object, e As EventArgs) Handles btnMaxAccidentModel2017.Click
+        Dim query As String = "
+    WITH AccidentCounts AS (
+        SELECT c.Model, COUNT(a.AccidentID) AS AccidentCount
+        FROM Accident a
+        INNER JOIN Car c ON a.CarID = c.CarID
+        WHERE YEAR(a.AccidentDate) = 2017
+        GROUP BY c.Model
+    )
+    SELECT Model, AccidentCount
+    FROM AccidentCounts
+    WHERE AccidentCount = (SELECT MAX(AccidentCount) FROM AccidentCounts)"
+        RunQuery(query)
+    End Sub
+    Private Sub btnTopAccidentModel2017_Click(sender As Object, e As EventArgs) Handles btnTopAccidentModel2017.Click
+        Dim query As String = "
+    SELECT TOP 1 c.Model, COUNT(a.AccidentID) AS AccidentCount
+    FROM Accident a
+    INNER JOIN Car c ON a.CarID = c.CarID
+    WHERE YEAR(a.AccidentDate) = 2017
+    GROUP BY c.Model
+    ORDER BY AccidentCount DESC"
+        RunQuery(query)
+    End Sub
+    Private Sub btnZeroAccidentModels_Click(sender As Object, e As EventArgs) Handles btnZeroAccidentModels.Click
+        Dim query As String = "
+    SELECT DISTINCT c.Model
+    FROM Car c
+    WHERE c.CarID NOT IN (
+        SELECT a.CarID
+        FROM Accident a
+        WHERE YEAR(a.AccidentDate) = 2017
+    )"
+        RunQuery(query)
+    End Sub
+    Private Sub btnAccidentCustomers2017_Click(sender As Object, e As EventArgs) Handles btnAccidentCustomers2017.Click
+        Dim query As String = "
+    SELECT DISTINCT cu.*
+    FROM Customer cu
+    INNER JOIN Ownership o ON cu.CustomerID = o.CustomerID
+    INNER JOIN Car c ON o.CarID = c.CarID
+    INNER JOIN Accident a ON a.CarID = c.CarID
+    WHERE YEAR(a.AccidentDate) = 2017
+      AND (o.StartDate IS NULL OR o.StartDate <= a.AccidentDate)
+      AND (o.EndDate IS NULL OR o.EndDate >= a.AccidentDate)"
+        RunQuery(query)
+    End Sub
+    Private Sub btnAccidentsByModel_Click(sender As Object, e As EventArgs) Handles btnAccidentsByModel.Click
+        Dim modelName As String = InputBox("Enter the car model name:", "Accidents by Model").Trim()
+
+        If String.IsNullOrWhiteSpace(modelName) Then
+            MessageBox.Show("You must enter a model name.")
+            Return
+        End If
+
+        Dim query As String = "
+    SELECT COUNT(a.AccidentID) AS AccidentCount
+    FROM Accident a
+    INNER JOIN Car c ON a.CarID = c.CarID
+    WHERE c.Model = @ModelName"
+
+        Dim parameters As New Dictionary(Of String, Object) From {
+        {"@ModelName", modelName}
+    }
+
+        RunQuery(query, parameters)
+    End Sub
 End Class

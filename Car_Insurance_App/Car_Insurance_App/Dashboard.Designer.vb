@@ -34,6 +34,17 @@ Partial Class Dashboard
         Me.View_accident = New System.Windows.Forms.Button()
         Me.ExportToPDF = New System.Windows.Forms.Button()
         Me.DeleteCar = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnAccidentsByModel = New System.Windows.Forms.Button()
+        Me.btnAccidentCustomers2017 = New System.Windows.Forms.Button()
+        Me.btnZeroAccidentModels = New System.Windows.Forms.Button()
+        Me.btnMaxAccidentModel2017 = New System.Windows.Forms.Button()
+        Me.btnTopAccidentModel2017 = New System.Windows.Forms.Button()
+        Me.btnAhmedMohamedAccidents = New System.Windows.Forms.Button()
+        Me.Queires = New System.Windows.Forms.Label()
+        Me.btnTotalOwners2017 = New System.Windows.Forms.Button()
+        Me.Report_btn = New System.Windows.Forms.Button()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'AddCustomer
@@ -138,11 +149,110 @@ Partial Class Dashboard
         Me.DeleteCar.Text = "Delete Car"
         Me.DeleteCar.UseVisualStyleBackColor = True
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.btnAccidentsByModel)
+        Me.GroupBox1.Controls.Add(Me.btnAccidentCustomers2017)
+        Me.GroupBox1.Controls.Add(Me.btnZeroAccidentModels)
+        Me.GroupBox1.Controls.Add(Me.btnMaxAccidentModel2017)
+        Me.GroupBox1.Controls.Add(Me.btnTopAccidentModel2017)
+        Me.GroupBox1.Controls.Add(Me.btnAhmedMohamedAccidents)
+        Me.GroupBox1.Controls.Add(Me.Queires)
+        Me.GroupBox1.Controls.Add(Me.btnTotalOwners2017)
+        Me.GroupBox1.Location = New System.Drawing.Point(25, 291)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(750, 185)
+        Me.GroupBox1.TabIndex = 12
+        Me.GroupBox1.TabStop = False
+        '
+        'btnAccidentsByModel
+        '
+        Me.btnAccidentsByModel.Location = New System.Drawing.Point(382, 99)
+        Me.btnAccidentsByModel.Name = "btnAccidentsByModel"
+        Me.btnAccidentsByModel.Size = New System.Drawing.Size(166, 42)
+        Me.btnAccidentsByModel.TabIndex = 15
+        Me.btnAccidentsByModel.Text = "Number of accidents for a specific model"
+        Me.btnAccidentsByModel.UseVisualStyleBackColor = True
+        '
+        'btnAccidentCustomers2017
+        '
+        Me.btnAccidentCustomers2017.Location = New System.Drawing.Point(203, 99)
+        Me.btnAccidentCustomers2017.Name = "btnAccidentCustomers2017"
+        Me.btnAccidentCustomers2017.Size = New System.Drawing.Size(166, 42)
+        Me.btnAccidentCustomers2017.TabIndex = 14
+        Me.btnAccidentCustomers2017.Text = "Customer info for owners of cars in 2017 accidents"
+        Me.btnAccidentCustomers2017.UseVisualStyleBackColor = True
+        '
+        'btnZeroAccidentModels
+        '
+        Me.btnZeroAccidentModels.Location = New System.Drawing.Point(17, 99)
+        Me.btnZeroAccidentModels.Name = "btnZeroAccidentModels"
+        Me.btnZeroAccidentModels.Size = New System.Drawing.Size(166, 42)
+        Me.btnZeroAccidentModels.TabIndex = 13
+        Me.btnZeroAccidentModels.Text = "Models with zero accidents in 2017"
+        Me.btnZeroAccidentModels.UseVisualStyleBackColor = True
+        '
+        'btnMaxAccidentModel2017
+        '
+        Me.btnMaxAccidentModel2017.Location = New System.Drawing.Point(568, 33)
+        Me.btnMaxAccidentModel2017.Name = "btnMaxAccidentModel2017"
+        Me.btnMaxAccidentModel2017.Size = New System.Drawing.Size(166, 42)
+        Me.btnMaxAccidentModel2017.TabIndex = 15
+        Me.btnMaxAccidentModel2017.Text = " Model(s) with max number of accidents in 2017"
+        Me.btnMaxAccidentModel2017.UseVisualStyleBackColor = True
+        '
+        'btnTopAccidentModel2017
+        '
+        Me.btnTopAccidentModel2017.Location = New System.Drawing.Point(382, 33)
+        Me.btnTopAccidentModel2017.Name = "btnTopAccidentModel2017"
+        Me.btnTopAccidentModel2017.Size = New System.Drawing.Size(166, 42)
+        Me.btnTopAccidentModel2017.TabIndex = 14
+        Me.btnTopAccidentModel2017.Text = "Top 1 accident model in 2017"
+        Me.btnTopAccidentModel2017.UseVisualStyleBackColor = True
+        '
+        'btnAhmedMohamedAccidents
+        '
+        Me.btnAhmedMohamedAccidents.Location = New System.Drawing.Point(203, 33)
+        Me.btnAhmedMohamedAccidents.Name = "btnAhmedMohamedAccidents"
+        Me.btnAhmedMohamedAccidents.Size = New System.Drawing.Size(166, 42)
+        Me.btnAhmedMohamedAccidents.TabIndex = 13
+        Me.btnAhmedMohamedAccidents.Text = "Accidents involving Ahmed Mohamed"
+        Me.btnAhmedMohamedAccidents.UseVisualStyleBackColor = True
+        '
+        'Queires
+        '
+        Me.Queires.AutoSize = True
+        Me.Queires.Location = New System.Drawing.Point(20, 11)
+        Me.Queires.Name = "Queires"
+        Me.Queires.Size = New System.Drawing.Size(54, 16)
+        Me.Queires.TabIndex = 1
+        Me.Queires.Text = "Queires"
+        '
+        'btnTotalOwners2017
+        '
+        Me.btnTotalOwners2017.Location = New System.Drawing.Point(6, 33)
+        Me.btnTotalOwners2017.Name = "btnTotalOwners2017"
+        Me.btnTotalOwners2017.Size = New System.Drawing.Size(177, 42)
+        Me.btnTotalOwners2017.TabIndex = 0
+        Me.btnTotalOwners2017.Text = "Total Owners in 2017 Accidents"
+        Me.btnTotalOwners2017.UseVisualStyleBackColor = True
+        '
+        'Report_btn
+        '
+        Me.Report_btn.Location = New System.Drawing.Point(12, 250)
+        Me.Report_btn.Name = "Report_btn"
+        Me.Report_btn.Size = New System.Drawing.Size(135, 23)
+        Me.Report_btn.TabIndex = 13
+        Me.Report_btn.Text = "Report"
+        Me.Report_btn.UseVisualStyleBackColor = True
+        '
         'Dashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(870, 499)
+        Me.Controls.Add(Me.Report_btn)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DeleteCar)
         Me.Controls.Add(Me.ExportToPDF)
         Me.Controls.Add(Me.View_accident)
@@ -157,6 +267,8 @@ Partial Class Dashboard
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Dashboard"
         Me.Text = "Dashboard"
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -172,4 +284,14 @@ Partial Class Dashboard
     Friend WithEvents View_accident As Button
     Friend WithEvents ExportToPDF As Button
     Friend WithEvents DeleteCar As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents btnTotalOwners2017 As Button
+    Friend WithEvents btnTopAccidentModel2017 As Button
+    Friend WithEvents btnAhmedMohamedAccidents As Button
+    Friend WithEvents Queires As Label
+    Friend WithEvents btnAccidentsByModel As Button
+    Friend WithEvents btnAccidentCustomers2017 As Button
+    Friend WithEvents btnZeroAccidentModels As Button
+    Friend WithEvents btnMaxAccidentModel2017 As Button
+    Friend WithEvents Report_btn As Button
 End Class

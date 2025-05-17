@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\users\\victus\\source\\repos\\database_project\\car_insurance_app\\car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\users\\victus\\source\\repos\\database_project\\car_insurance_app\\car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\users\\victus\\source\\repos\\database_project\\car_insurance_app\\car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|c:\\users\\victus\\source\\repos\\database_project\\car_insurance_app\\car_insurance_app\\addedit_car.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|solutionrelative:car_insurance_app\\addedit_car.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09FDB2E8-0FAB-45FF-BD80-7749A88D3FED}|Car_Insurance_App\\Car_Insurance_App.vbproj|C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\car_insurance_app\\addedit_customer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
@@ -44,14 +48,28 @@
               "RelativeDocumentMoniker": "Car_Insurance_App\\Dashboard.vb",
               "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\Dashboard.vb",
               "RelativeToolTip": "Car_Insurance_App\\Dashboard.vb",
-              "ViewState": "AgIAALAAAAAAAAAAAAAowMkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMBAAAAAAAAAADwvxkBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-05-16T19:16:05.049Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "AddEdit_Car.vb",
+              "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Car.vb",
+              "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Car.vb",
+              "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Car.vb",
+              "RelativeToolTip": "Car_Insurance_App\\AddEdit_Car.vb",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAuwCQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-05-17T08:22:01.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Dashboard.vb [Design]",
               "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\Dashboard.vb",
               "RelativeDocumentMoniker": "Car_Insurance_App\\Dashboard.vb",
@@ -63,20 +81,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "AddEdit_Customer.vb",
               "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
               "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Customer.vb",
               "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
               "RelativeToolTip": "Car_Insurance_App\\AddEdit_Customer.vb",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAowFcAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2025-05-16T20:52:21.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AddEdit_Customer.vb [Design]",
               "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Customer.vb",
               "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Customer.vb",
@@ -88,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AddEdit_Car.vb [Design]",
               "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\AddEdit_Car.vb",
               "RelativeDocumentMoniker": "Car_Insurance_App\\AddEdit_Car.vb",
@@ -100,15 +118,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "SignIn.vb [Design]",
               "DocumentMoniker": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb",
               "RelativeDocumentMoniker": "Car_Insurance_App\\SignIn.vb",
               "ToolTip": "C:\\Users\\VICTUS\\source\\repos\\DataBase_project\\Car_Insurance_App\\Car_Insurance_App\\SignIn.vb [Design]",
               "RelativeToolTip": "Car_Insurance_App\\SignIn.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2025-05-16T19:15:17.847Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-16T19:15:17.847Z"
             }
           ]
         }

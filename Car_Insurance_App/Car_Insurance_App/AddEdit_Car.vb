@@ -38,6 +38,7 @@ Public Class AddEdit_Car
     Public Sub LoadCarData(CarID)
         Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         Using conn As New SqlConnection(connectionString)
+            _isEditMode = True
             Dim query As String = "SELECT * FROM Car WHERE CarID = @CarID"
             Dim cmd As New SqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@CarID", CarID)

@@ -23,9 +23,9 @@ Public Class AddEdit_Customer
         _customerID = customerId
 
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT * FROM Customer WHERE CustomerID = @CustomerID"
@@ -64,9 +64,9 @@ Public Class AddEdit_Customer
 
     Private Sub RegisterUser()
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
@@ -106,9 +106,9 @@ Public Class AddEdit_Customer
         End If
 
         'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "UPDATE Customer SET 

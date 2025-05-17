@@ -9,7 +9,7 @@ Public Class AddEdit_Accident
     Private CarID
 
     ' Replace with your actual connection string
-    Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+    Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
 
     Private Sub AddEdit_Accident_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If _isEditMode Then

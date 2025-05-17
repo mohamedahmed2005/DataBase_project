@@ -22,6 +22,7 @@ Partial Class AddEdit_Car
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEdit_Car))
         Me.LicensePlateNumber = New System.Windows.Forms.Label()
         Me.LicensePlateNumber_input = New System.Windows.Forms.TextBox()
         Me.ChassisNumber_input = New System.Windows.Forms.TextBox()
@@ -452,6 +453,7 @@ Partial Class AddEdit_Car
         Me.Controls.Add(Me.ChassisNumber)
         Me.Controls.Add(Me.LicensePlateNumber_input)
         Me.Controls.Add(Me.LicensePlateNumber)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AddEdit_Car"
         Me.Text = "AddEdit_Car"
         Me.GroupBox2.ResumeLayout(False)

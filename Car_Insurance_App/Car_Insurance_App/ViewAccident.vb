@@ -1,13 +1,12 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class ViewAccident
-
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
     Private Sub ViewAccident_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadAccidentData()
     End Sub
 
     Private Sub LoadAccidentData()
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         Dim query As String = "SELECT * FROM Accident"
 
         Try

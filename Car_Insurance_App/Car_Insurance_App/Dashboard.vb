@@ -6,6 +6,9 @@ Imports iTextSharp.text.pdf
 
 Public Class Dashboard
     Private _username As String
+    ' Connection string should be defined once and reused
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+    'Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
     ' Constructor accepting username
     Public Sub New(username As String)
@@ -57,24 +60,48 @@ Public Class Dashboard
             Return
         End If
 
-        Dim confirmResult As DialogResult = MessageBox.Show($"Are you sure you want to delete customer '{customerID}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        Dim confirmResult As DialogResult = MessageBox.Show($"Are you sure you want to delete customer '{customerID}'? This will also delete all ownership records and accidents associated with this customer.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
         If confirmResult = DialogResult.No Then
             Return
         End If
 
         Try
-            Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
             Using conn As New SqlConnection(connectionString)
                 conn.Open()
-                Dim deleteQuery As String = "DELETE FROM Customer WHERE CustomerID = @CustomerID"
-                Using cmd As New SqlCommand(deleteQuery, conn)
-                    cmd.Parameters.AddWithValue("@CustomerID", customerID)
-                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-                    If rowsAffected > 0 Then
-                        MessageBox.Show("Customer deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        MessageBox.Show("Delete failed: Customer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
+                ' Begin a transaction to ensure all operations succeed or fail together
+                Using transaction As SqlTransaction = conn.BeginTransaction()
+                    Try
+                        ' First delete related accident records
+                        Dim deleteAccidentsQuery As String = "DELETE FROM Accident WHERE CustomerID = @CustomerID"
+                        Using cmdDeleteAccidents As New SqlCommand(deleteAccidentsQuery, conn, transaction)
+                            cmdDeleteAccidents.Parameters.AddWithValue("@CustomerID", customerID)
+                            cmdDeleteAccidents.ExecuteNonQuery()
+                        End Using
+
+                        ' Next delete ownership records
+                        Dim deleteOwnershipQuery As String = "DELETE FROM Ownership WHERE CustomerID = @CustomerID"
+                        Using cmdDeleteOwnership As New SqlCommand(deleteOwnershipQuery, conn, transaction)
+                            cmdDeleteOwnership.Parameters.AddWithValue("@CustomerID", customerID)
+                            cmdDeleteOwnership.ExecuteNonQuery()
+                        End Using
+
+                        ' Finally delete the customer
+                        Dim deleteCustomerQuery As String = "DELETE FROM Customer WHERE CustomerID = @CustomerID"
+                        Using cmdDeleteCustomer As New SqlCommand(deleteCustomerQuery, conn, transaction)
+                            cmdDeleteCustomer.Parameters.AddWithValue("@CustomerID", customerID)
+                            Dim rowsAffected As Integer = cmdDeleteCustomer.ExecuteNonQuery()
+                            If rowsAffected > 0 Then
+                                transaction.Commit()
+                                MessageBox.Show("Customer and all related records deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Else
+                                transaction.Rollback()
+                                MessageBox.Show("Delete failed: Customer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        transaction.Rollback()
+                        Throw
+                    End Try
                 End Using
             End Using
         Catch ex As Exception
@@ -122,7 +149,7 @@ Public Class Dashboard
                 Return
             End If
 
-            ' Associate existing car with the customer (you need to implement this method)
+            ' Associate existing car with the customer
             If AssignCarToCustomer(carIDInt, customerID) Then
                 MessageBox.Show($"Car ID '{carIDInt}' assigned to Customer ID '{customerID}'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
@@ -136,6 +163,7 @@ Public Class Dashboard
             Me.Hide()
         End If
     End Sub
+
     Private Sub EditCar_Click(sender As Object, e As EventArgs) Handles EditCar.Click
         ' Prompt for Customer ID
         Dim customerID As String = InputBox("Enter the Customer ID:", "Edit Car")
@@ -183,8 +211,6 @@ Public Class Dashboard
 
     Private Function AssignCarToCustomer(carID As Integer, customerID As String) As Boolean
         Try
-            Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-
             Using conn As New SqlConnection(connectionString)
                 conn.Open()
 
@@ -223,7 +249,7 @@ Public Class Dashboard
 
     ' -------------------- Accident BUTTONS --------------------
     Private Sub AddAccidentbtn_Click(sender As Object, e As EventArgs) Handles AddAccidentbtn.Click
-        Dim customerID As String = InputBox("Enter the Customer ID:", "Edit Car")
+        Dim customerID As String = InputBox("Enter the Customer ID:", "Add Accident")
 
         If String.IsNullOrWhiteSpace(customerID) Then
             MessageBox.Show("Customer ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -236,7 +262,7 @@ Public Class Dashboard
         End If
 
         ' Prompt for Car ID
-        Dim carIDInput As String = InputBox("Enter the Car ID to edit:", "Edit Car")
+        Dim carIDInput As String = InputBox("Enter the Car ID:", "Add Accident")
         If String.IsNullOrWhiteSpace(carIDInput) Then
             MessageBox.Show("Car ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -252,6 +278,13 @@ Public Class Dashboard
             MessageBox.Show($"Car with ID '{carID}' does not exist.", "Invalid Car", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
+
+        ' Check if car belongs to customer
+        If Not CarExistsForCustomer(carID, customerID) Then
+            MessageBox.Show($"Car ID '{carID}' is not assigned to Customer ID '{customerID}'.", "Ownership Mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
         Dim addEditAccidentForm As New AddEdit_Accident()
         addEditAccidentForm.Set_IDs(customerID, carID)
         addEditAccidentForm.Show()
@@ -265,10 +298,18 @@ Public Class Dashboard
             MessageBox.Show("Accident ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
-        If Not AccidentExists(accidentID) Then
-            MessageBox.Show($"Accident with ID '{accidentID}' does not exist.", "Invalid Customer", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Dim accidentIDInt As Integer
+        If Not Integer.TryParse(accidentID, accidentIDInt) Then
+            MessageBox.Show("Accident ID must be a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
+
+        If Not AccidentExists(accidentIDInt) Then
+            MessageBox.Show($"Accident with ID '{accidentID}' does not exist.", "Invalid Accident ID", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
         Dim addEditAccidentForm As New AddEdit_Accident()
         addEditAccidentForm.SetModeToEdit()
         addEditAccidentForm.LoadAccidentData(accidentID)
@@ -280,7 +321,7 @@ Public Class Dashboard
 
     Private Function CarExists(carID As Integer) As Boolean
         Dim exists As Boolean = False
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT COUNT(*) FROM Car WHERE CarID = @CarID"
             Dim cmd As New SqlCommand(query, conn)
@@ -294,12 +335,13 @@ Public Class Dashboard
                 MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
+
         Return exists
     End Function
 
     Private Function CarExistsForCustomer(carID As Integer, customerID As String) As Boolean
         Dim exists As Boolean = False
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT COUNT(*) FROM Ownership WHERE CarID = @CarID AND CustomerID = @CustomerID"
             Dim cmd As New SqlCommand(query, conn)
@@ -314,12 +356,13 @@ Public Class Dashboard
                 MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
+
         Return exists
     End Function
 
     Private Function CustomerExists(customerID As String) As Boolean
         Dim exists As Boolean = False
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT COUNT(*) FROM Customer WHERE CustomerID = @CustomerID"
             Dim cmd As New SqlCommand(query, conn)
@@ -333,12 +376,12 @@ Public Class Dashboard
                 MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
+
         Return exists
     End Function
 
     Private Function AccidentExists(accidentID As Integer) As Boolean
         Dim exists As Boolean = False
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT COUNT(*) FROM Accident WHERE AccidentID = @AccidentID"
@@ -368,13 +411,13 @@ Public Class Dashboard
         Try
             ' Prompt user for year and month
             Dim inputYear As String = InputBox("Enter the year (e.g., 2024):", "Select Year")
-            If Not Integer.TryParse(inputYear, Nothing) Then
+            If String.IsNullOrWhiteSpace(inputYear) OrElse Not Integer.TryParse(inputYear, Nothing) Then
                 MessageBox.Show("Invalid year entered.")
                 Return
             End If
 
             Dim inputMonth As String = InputBox("Enter the month number (1-12):", "Select Month")
-            If Not Integer.TryParse(inputMonth, Nothing) OrElse CInt(inputMonth) < 1 OrElse CInt(inputMonth) > 12 Then
+            If String.IsNullOrWhiteSpace(inputMonth) OrElse Not Integer.TryParse(inputMonth, Nothing) OrElse CInt(inputMonth) < 1 OrElse CInt(inputMonth) > 12 Then
                 MessageBox.Show("Invalid month entered.")
                 Return
             End If
@@ -382,7 +425,6 @@ Public Class Dashboard
             Dim year As Integer = CInt(inputYear)
             Dim month As Integer = CInt(inputMonth)
 
-            Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
             Dim dtSummary As New DataTable()
             Dim dtDetails As New DataTable()
 
@@ -447,6 +489,10 @@ Public Class Dashboard
                     Dim detailTable As New PdfPTable(11)
                     detailTable.WidthPercentage = 100
 
+                    ' Set relative column widths for better readability
+                    Dim columnWidths() As Single = {5, 7, 5, 8, 6, 15, 5, 7, 12, 6, 4} ' Adjusted column widths
+                    detailTable.SetWidths(columnWidths)
+
                     ' Column headers
                     Dim headers As String() = {"Accident ID", "Police Report #", "Is Natural", "Accident Type", "Damage Cost",
                                                "Description", "Time", "Accident Date", "Location", "Customer ID", "Car ID"}
@@ -461,7 +507,7 @@ Public Class Dashboard
                         detailTable.AddCell(New Phrase(row("PoliceReportNumber").ToString(), dataFont))
                         detailTable.AddCell(New Phrase(If(CBool(row("IsNatural")), "Yes", "No"), dataFont))
                         detailTable.AddCell(New Phrase(row("AccidentType").ToString(), dataFont))
-                        detailTable.AddCell(New Phrase(row("DamageCost").ToString(), dataFont))
+                        detailTable.AddCell(New Phrase(FormatCurrency(row("DamageCost")), dataFont))
                         detailTable.AddCell(New Phrase(row("Description").ToString(), dataFont))
                         detailTable.AddCell(New Phrase(row("Time").ToString(), dataFont))
                         detailTable.AddCell(New Phrase(Convert.ToDateTime(row("AccidentDate")).ToString("yyyy-MM-dd"), dataFont))
@@ -482,5 +528,71 @@ Public Class Dashboard
         End Try
     End Sub
 
+    Private Sub DeleteCar_Click(sender As Object, e As EventArgs) Handles DeleteCar.Click
+        ' Prompt for Car ID
+        Dim carIDInput As String = InputBox("Enter the Car ID to delete:", "Delete Car")
+        If String.IsNullOrWhiteSpace(carIDInput) Then
+            MessageBox.Show("Car ID is required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
+        Dim carID As Integer
+        If Not Integer.TryParse(carIDInput, carID) Then
+            MessageBox.Show("Car ID must be a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        If Not CarExists(carID) Then
+            MessageBox.Show($"Car with ID '{carID}' does not exist.", "Invalid Car", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Dim confirmResult As DialogResult = MessageBox.Show($"Are you sure you want to delete car with ID '{carID}'? This will also delete all ownership records and accidents associated with this car.", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+        If confirmResult = DialogResult.No Then
+            Return
+        End If
+
+        Try
+            Using conn As New SqlConnection(connectionString)
+                conn.Open()
+                ' Begin a transaction to ensure all operations succeed or fail together
+                Using transaction As SqlTransaction = conn.BeginTransaction()
+                    Try
+                        ' First delete related accident records
+                        Dim deleteAccidentsQuery As String = "DELETE FROM Accident WHERE CarID = @CarID"
+                        Using cmdDeleteAccidents As New SqlCommand(deleteAccidentsQuery, conn, transaction)
+                            cmdDeleteAccidents.Parameters.AddWithValue("@CarID", carID)
+                            cmdDeleteAccidents.ExecuteNonQuery()
+                        End Using
+
+                        ' Next delete ownership records
+                        Dim deleteOwnershipQuery As String = "DELETE FROM Ownership WHERE CarID = @CarID"
+                        Using cmdDeleteOwnership As New SqlCommand(deleteOwnershipQuery, conn, transaction)
+                            cmdDeleteOwnership.Parameters.AddWithValue("@CarID", carID)
+                            cmdDeleteOwnership.ExecuteNonQuery()
+                        End Using
+
+                        ' Finally delete the car
+                        Dim deleteCarQuery As String = "DELETE FROM Car WHERE CarID = @CarID"
+                        Using cmdDeleteCar As New SqlCommand(deleteCarQuery, conn, transaction)
+                            cmdDeleteCar.Parameters.AddWithValue("@CarID", carID)
+                            Dim rowsAffected As Integer = cmdDeleteCar.ExecuteNonQuery()
+                            If rowsAffected > 0 Then
+                                transaction.Commit()
+                                MessageBox.Show("Car and all related records deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Else
+                                transaction.Rollback()
+                                MessageBox.Show("Delete failed: Car not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        transaction.Rollback()
+                        Throw
+                    End Try
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Database error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

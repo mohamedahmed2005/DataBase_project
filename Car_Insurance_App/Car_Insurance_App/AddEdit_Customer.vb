@@ -3,6 +3,9 @@ Imports System.Text.RegularExpressions
 
 Public Class AddEdit_Customer
 
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+    'Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+
     Private _isEditMode As Boolean = False
     Private _customerID As Integer = -1
 
@@ -21,11 +24,6 @@ Public Class AddEdit_Customer
     Public Sub LoadCustomerData(customerId As Integer)
         _isEditMode = True
         _customerID = customerId
-
-        'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT * FROM Customer WHERE CustomerID = @CustomerID"
@@ -63,11 +61,6 @@ Public Class AddEdit_Customer
     End Sub
 
     Private Sub RegisterUser()
-        'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
-
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
                 (FullName, NationalID, PhoneNumber, Address, Email, Nationality, Gender, DateOfBirth, BloodType, CustomerStatus, AccountCreationDate, AccountUpdateDate)
@@ -104,12 +97,6 @@ Public Class AddEdit_Customer
             MessageBox.Show("Customer ID is missing.")
             Return
         End If
-
-        'For Mohamed Connection'
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        'Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
-
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "UPDATE Customer SET 
                 FullName = @FullName, 

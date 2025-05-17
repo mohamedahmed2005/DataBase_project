@@ -2,6 +2,8 @@
 
 Public Class AddEdit_Car
 
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+    'Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
     Private _isEditMode As Boolean = False
     Private _carID As String = "" ' Using LicensePlateNumber as PK (string)
 
@@ -36,7 +38,6 @@ Public Class AddEdit_Car
 
     ' Load car data into form fields for editing
     Public Sub LoadCarData(CarID)
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         Using conn As New SqlConnection(connectionString)
             _isEditMode = True
             Dim query As String = "SELECT * FROM Car WHERE CarID = @CarID"
@@ -83,7 +84,6 @@ Public Class AddEdit_Car
 
 
     Private Sub Submit_btn_Click(sender As Object, e As EventArgs) Handles Submit_btn.Click
-        Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
         Dim licensePlate = LicensePlateNumber_input.Text.Trim()
         Dim customerId = _customerID ' You must set this before calling Submit
         Dim ownershipStart = CarStart.Value

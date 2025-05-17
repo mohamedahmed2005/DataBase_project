@@ -33,6 +33,7 @@ Partial Class Dashboard
         Me.EditAccidentbtn = New System.Windows.Forms.Button()
         Me.View_accident = New System.Windows.Forms.Button()
         Me.ExportToPDF = New System.Windows.Forms.Button()
+        Me.DeleteCar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'AddCustomer
@@ -128,11 +129,21 @@ Partial Class Dashboard
         Me.ExportToPDF.Text = "Export to PDF"
         Me.ExportToPDF.UseVisualStyleBackColor = True
         '
+        'DeleteCar
+        '
+        Me.DeleteCar.Location = New System.Drawing.Point(280, 206)
+        Me.DeleteCar.Name = "DeleteCar"
+        Me.DeleteCar.Size = New System.Drawing.Size(133, 23)
+        Me.DeleteCar.TabIndex = 11
+        Me.DeleteCar.Text = "Delete Car"
+        Me.DeleteCar.UseVisualStyleBackColor = True
+        '
         'Dashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.DeleteCar)
         Me.Controls.Add(Me.ExportToPDF)
         Me.Controls.Add(Me.View_accident)
         Me.Controls.Add(Me.EditAccidentbtn)
@@ -160,4 +171,5 @@ Partial Class Dashboard
     Friend WithEvents EditAccidentbtn As Button
     Friend WithEvents View_accident As Button
     Friend WithEvents ExportToPDF As Button
+    Friend WithEvents DeleteCar As Button
 End Class

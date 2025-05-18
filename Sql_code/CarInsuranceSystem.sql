@@ -10,8 +10,6 @@
 -- Customer table
 CREATE TABLE Customer (
     CustomerID INT PRIMARY KEY IDENTITY(1,1),
-    Username VARCHAR(50) NOT NULL,
-    Password VARCHAR(50) NOT NULL,
     Email VARCHAR(100) NOT NULL,
     FullName VARCHAR(100),
     NationalID INT NOT NULL,
@@ -21,7 +19,6 @@ CREATE TABLE Customer (
     Gender CHAR(1),
     DateOfBirth DATE,
     BloodType VARCHAR(5),
-    MaritalStatus VARCHAR(20),
     CustomerStatus VARCHAR(20),
     AccountCreationDate DATE,
     AccountUpdateDate DATE

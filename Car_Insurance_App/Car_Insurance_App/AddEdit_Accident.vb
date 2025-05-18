@@ -8,8 +8,8 @@ Public Class AddEdit_Accident
     Private CustomerID
     Private CarID
 
-    ' Replace with your actual connection string
-    Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
+    'Private ReadOnly connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
     Private Sub AddEdit_Accident_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If _isEditMode Then
@@ -19,6 +19,10 @@ Public Class AddEdit_Accident
             title_lable.Text = "Add Accident"
             submit.Text = "Add"
         End If
+
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle ' Or FixedDialog
     End Sub
 
     Public Sub SetModeToEdit()
@@ -161,5 +165,4 @@ Public Class AddEdit_Accident
     '    Me.CustomerID = CustomerID
     '    Me.CarID = CarID
     'End Sub
-
 End Class

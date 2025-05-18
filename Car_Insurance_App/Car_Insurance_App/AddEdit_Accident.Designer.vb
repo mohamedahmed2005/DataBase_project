@@ -22,6 +22,7 @@ Partial Class AddEdit_Accident
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEdit_Accident))
         Me.title_lable = New System.Windows.Forms.Label()
         Me.Police_report_number = New System.Windows.Forms.TextBox()
         Me.Damage_cost = New System.Windows.Forms.NumericUpDown()
@@ -48,81 +49,89 @@ Partial Class AddEdit_Accident
         'title_lable
         '
         Me.title_lable.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.title_lable.Location = New System.Drawing.Point(315, 37)
+        Me.title_lable.Location = New System.Drawing.Point(280, 30)
         Me.title_lable.Name = "title_lable"
-        Me.title_lable.Size = New System.Drawing.Size(369, 101)
+        Me.title_lable.Size = New System.Drawing.Size(328, 81)
         Me.title_lable.TabIndex = 0
         Me.title_lable.Text = "Add Accident"
         Me.title_lable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Police_report_number
         '
-        Me.Police_report_number.Location = New System.Drawing.Point(207, 200)
+        Me.Police_report_number.Location = New System.Drawing.Point(184, 160)
+        Me.Police_report_number.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Police_report_number.Name = "Police_report_number"
-        Me.Police_report_number.Size = New System.Drawing.Size(254, 26)
+        Me.Police_report_number.Size = New System.Drawing.Size(226, 22)
         Me.Police_report_number.TabIndex = 1
         '
         'Damage_cost
         '
-        Me.Damage_cost.Location = New System.Drawing.Point(212, 379)
+        Me.Damage_cost.Location = New System.Drawing.Point(188, 303)
+        Me.Damage_cost.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Damage_cost.Maximum = New Decimal(New Integer() {-1486618625, 232830643, 0, 0})
         Me.Damage_cost.Name = "Damage_cost"
-        Me.Damage_cost.Size = New System.Drawing.Size(249, 26)
+        Me.Damage_cost.Size = New System.Drawing.Size(221, 22)
         Me.Damage_cost.TabIndex = 3
         '
         'Description
         '
-        Me.Description.Location = New System.Drawing.Point(212, 430)
+        Me.Description.Location = New System.Drawing.Point(188, 344)
+        Me.Description.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Description.Name = "Description"
-        Me.Description.Size = New System.Drawing.Size(249, 26)
+        Me.Description.Size = New System.Drawing.Size(222, 22)
         Me.Description.TabIndex = 4
         '
         'Accident_date
         '
-        Me.Accident_date.Location = New System.Drawing.Point(642, 200)
+        Me.Accident_date.Location = New System.Drawing.Point(571, 160)
+        Me.Accident_date.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Accident_date.Name = "Accident_date"
-        Me.Accident_date.Size = New System.Drawing.Size(251, 26)
+        Me.Accident_date.Size = New System.Drawing.Size(224, 22)
         Me.Accident_date.TabIndex = 5
         '
         'Accident_location
         '
-        Me.Accident_location.Location = New System.Drawing.Point(642, 317)
+        Me.Accident_location.Location = New System.Drawing.Point(571, 254)
+        Me.Accident_location.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Accident_location.Name = "Accident_location"
-        Me.Accident_location.Size = New System.Drawing.Size(251, 26)
+        Me.Accident_location.Size = New System.Drawing.Size(224, 22)
         Me.Accident_location.TabIndex = 6
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(35, 203)
+        Me.Label2.Location = New System.Drawing.Point(31, 162)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(155, 20)
+        Me.Label2.Size = New System.Drawing.Size(131, 16)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Police report number"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(35, 269)
+        Me.Label3.Location = New System.Drawing.Point(31, 215)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(75, 20)
+        Me.Label3.Size = New System.Drawing.Size(60, 16)
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Is natural"
         '
         'Accident_type
         '
         Me.Accident_type.FormattingEnabled = True
-        Me.Accident_type.Location = New System.Drawing.Point(212, 320)
+        Me.Accident_type.Items.AddRange(New Object() {"Rear-end collision", "Head-on collision", "Side-impact (T-bone) collision", "Single-vehicle accident (e.g., hitting a tree or guardrail)", "Rollover accident", "Sideswipe collision", "Pedestrian accident", "Hit-and-run accident", "Parking lot accident", "Multi-vehicle pile-up (chain-reaction crash)"})
+        Me.Accident_type.Location = New System.Drawing.Point(188, 256)
+        Me.Accident_type.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Accident_type.Name = "Accident_type"
-        Me.Accident_type.Size = New System.Drawing.Size(249, 28)
+        Me.Accident_type.Size = New System.Drawing.Size(222, 24)
         Me.Accident_type.TabIndex = 10
         '
         'Natural
         '
         Me.Natural.AutoSize = True
-        Me.Natural.Location = New System.Drawing.Point(212, 269)
+        Me.Natural.Location = New System.Drawing.Point(188, 215)
+        Me.Natural.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Natural.Name = "Natural"
-        Me.Natural.Size = New System.Drawing.Size(85, 24)
+        Me.Natural.Size = New System.Drawing.Size(71, 20)
         Me.Natural.TabIndex = 2
         Me.Natural.TabStop = True
         Me.Natural.Text = "Natural"
@@ -131,9 +140,10 @@ Partial Class AddEdit_Accident
         'Not_Natural
         '
         Me.Not_Natural.AutoSize = True
-        Me.Not_Natural.Location = New System.Drawing.Point(349, 269)
+        Me.Not_Natural.Location = New System.Drawing.Point(310, 215)
+        Me.Not_Natural.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Not_Natural.Name = "Not_Natural"
-        Me.Not_Natural.Size = New System.Drawing.Size(112, 24)
+        Me.Not_Natural.Size = New System.Drawing.Size(92, 20)
         Me.Not_Natural.TabIndex = 11
         Me.Not_Natural.TabStop = True
         Me.Not_Natural.Text = "Not natural"
@@ -142,45 +152,45 @@ Partial Class AddEdit_Accident
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(35, 323)
+        Me.Label4.Location = New System.Drawing.Point(31, 258)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(105, 20)
+        Me.Label4.Size = New System.Drawing.Size(88, 16)
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Accident type"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(36, 381)
+        Me.Label5.Location = New System.Drawing.Point(32, 305)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(104, 20)
+        Me.Label5.Size = New System.Drawing.Size(88, 16)
         Me.Label5.TabIndex = 13
         Me.Label5.Text = "Damage cost"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(36, 436)
+        Me.Label6.Location = New System.Drawing.Point(32, 349)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(89, 20)
+        Me.Label6.Size = New System.Drawing.Size(75, 16)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "Description"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(557, 203)
+        Me.Label7.Location = New System.Drawing.Point(495, 162)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(44, 20)
+        Me.Label7.Size = New System.Drawing.Size(36, 16)
         Me.Label7.TabIndex = 15
         Me.Label7.Text = "Date"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(557, 320)
+        Me.Label8.Location = New System.Drawing.Point(495, 256)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(70, 20)
+        Me.Label8.Size = New System.Drawing.Size(58, 16)
         Me.Label8.TabIndex = 16
         Me.Label8.Text = "Location"
         '
@@ -210,43 +220,46 @@ Partial Class AddEdit_Accident
         Me.Accident_time.Items.Add("21:00")
         Me.Accident_time.Items.Add("22:00")
         Me.Accident_time.Items.Add("23:00")
-        Me.Accident_time.Location = New System.Drawing.Point(642, 263)
+        Me.Accident_time.Location = New System.Drawing.Point(571, 210)
+        Me.Accident_time.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Accident_time.Name = "Accident_time"
-        Me.Accident_time.Size = New System.Drawing.Size(251, 26)
+        Me.Accident_time.Size = New System.Drawing.Size(223, 22)
         Me.Accident_time.TabIndex = 17
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(557, 265)
+        Me.Label9.Location = New System.Drawing.Point(495, 212)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(43, 20)
+        Me.Label9.Size = New System.Drawing.Size(38, 16)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = "Time"
         '
         'submit
         '
-        Me.submit.Location = New System.Drawing.Point(349, 501)
+        Me.submit.Location = New System.Drawing.Point(310, 401)
+        Me.submit.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.submit.Name = "submit"
-        Me.submit.Size = New System.Drawing.Size(132, 56)
+        Me.submit.Size = New System.Drawing.Size(117, 45)
         Me.submit.TabIndex = 19
         Me.submit.Text = "Submit"
         Me.submit.UseVisualStyleBackColor = True
         '
         'cancel
         '
-        Me.cancel.Location = New System.Drawing.Point(592, 501)
+        Me.cancel.Location = New System.Drawing.Point(526, 401)
+        Me.cancel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cancel.Name = "cancel"
-        Me.cancel.Size = New System.Drawing.Size(115, 56)
+        Me.cancel.Size = New System.Drawing.Size(102, 45)
         Me.cancel.TabIndex = 20
         Me.cancel.Text = "Cancel"
         Me.cancel.UseVisualStyleBackColor = True
         '
         'AddEdit_Accident
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1036, 592)
+        Me.ClientSize = New System.Drawing.Size(921, 474)
         Me.Controls.Add(Me.cancel)
         Me.Controls.Add(Me.submit)
         Me.Controls.Add(Me.Label9)
@@ -267,6 +280,8 @@ Partial Class AddEdit_Accident
         Me.Controls.Add(Me.Damage_cost)
         Me.Controls.Add(Me.Police_report_number)
         Me.Controls.Add(Me.title_lable)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "AddEdit_Accident"
         Me.Text = "AddEdit_Accident"
         CType(Me.Damage_cost, System.ComponentModel.ISupportInitialize).EndInit()

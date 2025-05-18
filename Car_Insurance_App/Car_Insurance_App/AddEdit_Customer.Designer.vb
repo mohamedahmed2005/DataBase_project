@@ -22,6 +22,7 @@ Partial Class AddEdit_Customer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEdit_Customer))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtFullName = New System.Windows.Forms.TextBox()
@@ -43,79 +44,80 @@ Partial Class AddEdit_Customer
         Me.Cancelbtn = New System.Windows.Forms.Button()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblAge = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(352, 62)
+        Me.Label1.Location = New System.Drawing.Point(313, 50)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(332, 55)
+        Me.Label1.Size = New System.Drawing.Size(275, 46)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Add Customer"
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(78, 170)
+        Me.Label2.Location = New System.Drawing.Point(69, 136)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(110, 22)
+        Me.Label2.Size = New System.Drawing.Size(98, 18)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Full name"
         '
         'txtFullName
         '
-        Me.txtFullName.Location = New System.Drawing.Point(182, 168)
+        Me.txtFullName.Location = New System.Drawing.Point(162, 134)
         Me.txtFullName.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtFullName.Name = "txtFullName"
-        Me.txtFullName.Size = New System.Drawing.Size(257, 26)
+        Me.txtFullName.Size = New System.Drawing.Size(229, 22)
         Me.txtFullName.TabIndex = 2
         '
         'txtNationalID
         '
-        Me.txtNationalID.Location = New System.Drawing.Point(182, 209)
+        Me.txtNationalID.Location = New System.Drawing.Point(162, 167)
         Me.txtNationalID.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtNationalID.Name = "txtNationalID"
-        Me.txtNationalID.Size = New System.Drawing.Size(257, 26)
+        Me.txtNationalID.Size = New System.Drawing.Size(229, 22)
         Me.txtNationalID.TabIndex = 8
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(78, 212)
+        Me.Label5.Location = New System.Drawing.Point(69, 170)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(110, 22)
+        Me.Label5.Size = New System.Drawing.Size(98, 18)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "National ID"
         '
         'txtPhoneNumber
         '
-        Me.txtPhoneNumber.Location = New System.Drawing.Point(182, 252)
+        Me.txtPhoneNumber.Location = New System.Drawing.Point(162, 202)
         Me.txtPhoneNumber.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtPhoneNumber.Name = "txtPhoneNumber"
-        Me.txtPhoneNumber.Size = New System.Drawing.Size(257, 26)
+        Me.txtPhoneNumber.Size = New System.Drawing.Size(229, 22)
         Me.txtPhoneNumber.TabIndex = 14
         '
         'Label8
         '
-        Me.Label8.Location = New System.Drawing.Point(74, 255)
+        Me.Label8.Location = New System.Drawing.Point(66, 204)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(114, 22)
+        Me.Label8.Size = New System.Drawing.Size(101, 18)
         Me.Label8.TabIndex = 13
         Me.Label8.Text = "Phone number"
         '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(182, 295)
+        Me.txtAddress.Location = New System.Drawing.Point(162, 236)
         Me.txtAddress.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(257, 26)
+        Me.txtAddress.Size = New System.Drawing.Size(229, 22)
         Me.txtAddress.TabIndex = 16
         '
         'Label9
         '
-        Me.Label9.Location = New System.Drawing.Point(78, 298)
+        Me.Label9.Location = New System.Drawing.Point(69, 238)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(110, 22)
+        Me.Label9.Size = New System.Drawing.Size(98, 18)
         Me.Label9.TabIndex = 15
         Me.Label9.Text = "Address"
         '
@@ -124,25 +126,25 @@ Partial Class AddEdit_Customer
         Me.cbNationality.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbNationality.FormattingEnabled = True
         Me.cbNationality.Items.AddRange(New Object() {"Egyptian", "American", "British", "French", "German", "Italian", "Spanish", "Japanese", "Chinese", "Indian", "Brazilian", "Mexican", "Australian", "Russian", "Canadian", "South African", "Saudi", "Turkish", "Greek", "Nigerian"})
-        Me.cbNationality.Location = New System.Drawing.Point(624, 164)
+        Me.cbNationality.Location = New System.Drawing.Point(555, 131)
         Me.cbNationality.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cbNationality.Name = "cbNationality"
-        Me.cbNationality.Size = New System.Drawing.Size(257, 28)
+        Me.cbNationality.Size = New System.Drawing.Size(229, 24)
         Me.cbNationality.TabIndex = 17
         '
         'Label10
         '
-        Me.Label10.Location = New System.Drawing.Point(520, 169)
+        Me.Label10.Location = New System.Drawing.Point(462, 135)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(106, 22)
+        Me.Label10.Size = New System.Drawing.Size(94, 18)
         Me.Label10.TabIndex = 18
         Me.Label10.Text = "Nationality"
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(520, 214)
+        Me.Label11.Location = New System.Drawing.Point(462, 171)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(106, 22)
+        Me.Label11.Size = New System.Drawing.Size(94, 18)
         Me.Label11.TabIndex = 20
         Me.Label11.Text = "Gender"
         '
@@ -151,33 +153,33 @@ Partial Class AddEdit_Customer
         Me.cbGender.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbGender.FormattingEnabled = True
         Me.cbGender.Items.AddRange(New Object() {"M", "F"})
-        Me.cbGender.Location = New System.Drawing.Point(624, 209)
+        Me.cbGender.Location = New System.Drawing.Point(555, 167)
         Me.cbGender.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cbGender.Name = "cbGender"
-        Me.cbGender.Size = New System.Drawing.Size(257, 28)
+        Me.cbGender.Size = New System.Drawing.Size(229, 24)
         Me.cbGender.TabIndex = 19
         '
         'dtpDOB
         '
-        Me.dtpDOB.Location = New System.Drawing.Point(624, 255)
+        Me.dtpDOB.Location = New System.Drawing.Point(555, 204)
         Me.dtpDOB.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dtpDOB.Name = "dtpDOB"
-        Me.dtpDOB.Size = New System.Drawing.Size(257, 26)
+        Me.dtpDOB.Size = New System.Drawing.Size(229, 22)
         Me.dtpDOB.TabIndex = 21
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(520, 255)
+        Me.Label12.Location = New System.Drawing.Point(462, 204)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(98, 22)
+        Me.Label12.Size = New System.Drawing.Size(87, 18)
         Me.Label12.TabIndex = 22
         Me.Label12.Text = "Date of birth"
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(520, 304)
+        Me.Label13.Location = New System.Drawing.Point(462, 243)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(106, 22)
+        Me.Label13.Size = New System.Drawing.Size(94, 18)
         Me.Label13.TabIndex = 24
         Me.Label13.Text = "Blood type"
         '
@@ -186,54 +188,64 @@ Partial Class AddEdit_Customer
         Me.cbBloodType.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cbBloodType.FormattingEnabled = True
         Me.cbBloodType.Items.AddRange(New Object() {"A", "A+", "A-", "B", "B+", "B-", "O", "O+", "O-", "AB", "AB+", "AB-"})
-        Me.cbBloodType.Location = New System.Drawing.Point(624, 299)
+        Me.cbBloodType.Location = New System.Drawing.Point(555, 239)
         Me.cbBloodType.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cbBloodType.Name = "cbBloodType"
-        Me.cbBloodType.Size = New System.Drawing.Size(257, 28)
+        Me.cbBloodType.Size = New System.Drawing.Size(229, 24)
         Me.cbBloodType.TabIndex = 23
         '
         'Submitbtn
         '
-        Me.Submitbtn.Location = New System.Drawing.Point(271, 381)
+        Me.Submitbtn.Location = New System.Drawing.Point(241, 305)
         Me.Submitbtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Submitbtn.Name = "Submitbtn"
-        Me.Submitbtn.Size = New System.Drawing.Size(130, 58)
+        Me.Submitbtn.Size = New System.Drawing.Size(116, 46)
         Me.Submitbtn.TabIndex = 25
         Me.Submitbtn.Text = "Submit"
         Me.Submitbtn.UseVisualStyleBackColor = True
         '
         'Cancelbtn
         '
-        Me.Cancelbtn.Location = New System.Drawing.Point(496, 381)
+        Me.Cancelbtn.Location = New System.Drawing.Point(441, 305)
         Me.Cancelbtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Cancelbtn.Name = "Cancelbtn"
-        Me.Cancelbtn.Size = New System.Drawing.Size(130, 58)
+        Me.Cancelbtn.Size = New System.Drawing.Size(116, 46)
         Me.Cancelbtn.TabIndex = 26
         Me.Cancelbtn.Text = "Cancel"
         Me.Cancelbtn.UseVisualStyleBackColor = True
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(182, 339)
+        Me.txtEmail.Location = New System.Drawing.Point(162, 271)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(257, 26)
+        Me.txtEmail.Size = New System.Drawing.Size(229, 22)
         Me.txtEmail.TabIndex = 28
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(78, 342)
+        Me.Label3.Location = New System.Drawing.Point(69, 274)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(110, 22)
+        Me.Label3.Size = New System.Drawing.Size(98, 18)
         Me.Label3.TabIndex = 27
         Me.Label3.Text = "Email"
         '
+        'lblAge
+        '
+        Me.lblAge.AutoSize = True
+        Me.lblAge.Location = New System.Drawing.Point(791, 205)
+        Me.lblAge.Name = "lblAge"
+        Me.lblAge.Size = New System.Drawing.Size(35, 16)
+        Me.lblAge.TabIndex = 29
+        Me.lblAge.Text = "Age:"
+        '
         'AddEdit_Customer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1054, 660)
+        Me.ClientSize = New System.Drawing.Size(937, 528)
+        Me.Controls.Add(Me.lblAge)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Cancelbtn)
@@ -255,6 +267,7 @@ Partial Class AddEdit_Customer
         Me.Controls.Add(Me.txtFullName)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "AddEdit_Customer"
         Me.Text = "Add Custome"
@@ -284,4 +297,5 @@ Partial Class AddEdit_Customer
     Friend WithEvents Cancelbtn As Button
     Friend WithEvents txtEmail As TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents lblAge As Label
 End Class

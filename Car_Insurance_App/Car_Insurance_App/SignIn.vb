@@ -8,6 +8,10 @@ Public Class SignIn
         Passwordtxt.UseSystemPasswordChar = True
         ShowPassword.Appearance = Appearance.Button
         ShowPassword.Image = My.Resources.eye_slash
+
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle ' Or FixedDialog
     End Sub
 
     Private Sub Login_Click(sender As Object, e As EventArgs) Handles Login.Click

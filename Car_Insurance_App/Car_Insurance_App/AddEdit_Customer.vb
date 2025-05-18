@@ -3,6 +3,7 @@ Imports System.Text.RegularExpressions
 
 Public Class AddEdit_Customer
 
+    Private ReadOnly connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
     Private _isEditMode As Boolean = False
     Private _customerID As Integer = -1
 
@@ -16,16 +17,18 @@ Public Class AddEdit_Customer
             Submitbtn.Text = "Add"
             txtNationalID.ReadOnly = False
         End If
+
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
+
+        ' Show age on form load (if a date is already selected)
+        UpdateAgeLabel()
     End Sub
 
     Public Sub LoadCustomerData(customerId As Integer)
         _isEditMode = True
         _customerID = customerId
-
-        'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
 
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "SELECT * FROM Customer WHERE CustomerID = @CustomerID"
@@ -46,10 +49,10 @@ Public Class AddEdit_Customer
 
                         If Not IsDBNull(reader("DateOfBirth")) Then
                             dtpDOB.Value = Convert.ToDateTime(reader("DateOfBirth"))
+                            UpdateAgeLabel()
                         End If
 
                         cbBloodType.SelectedItem = If(IsDBNull(reader("BloodType")), "", reader("BloodType").ToString())
-
                     Else
                         MessageBox.Show("Customer not found.")
                         Me.Close()
@@ -63,11 +66,6 @@ Public Class AddEdit_Customer
     End Sub
 
     Private Sub RegisterUser()
-        'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
-
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "INSERT INTO Customer 
                 (FullName, NationalID, PhoneNumber, Address, Email, Nationality, Gender, DateOfBirth, BloodType, CustomerStatus, AccountCreationDate, AccountUpdateDate)
@@ -104,12 +102,6 @@ Public Class AddEdit_Customer
             MessageBox.Show("Customer ID is missing.")
             Return
         End If
-
-        'For Mohamed Connection'
-        'Dim connectionString As String = "Server=localhost;Database=CarInsuranceSystem;Trusted_Connection=True;"
-        'For Mostafa Connection'
-        Dim connectionString As String = "Data Source=DESKTOP-77C0VCL\SQLEXPRESS;Initial Catalog=Car_Insurance_DB;Integrated Security=True;Encrypt=false;"
-
         Using conn As New SqlConnection(connectionString)
             Dim query As String = "UPDATE Customer SET 
                 FullName = @FullName, 
@@ -190,19 +182,37 @@ Public Class AddEdit_Customer
         End If
 
         ' Return to Dashboard
-        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username if dynamic
+        Dim dashboardForm As New Dashboard("admin")
         dashboardForm.Show()
         Me.Hide()
     End Sub
 
     Private Sub Cancelbtn_Click(sender As Object, e As EventArgs) Handles Cancelbtn.Click
-        Dim dashboardForm As New Dashboard("admin") ' Replace with actual username if dynamic
+        Dim dashboardForm As New Dashboard("admin")
         dashboardForm.Show()
         Me.Hide()
     End Sub
 
     Public Sub SetModeToEdit()
         _isEditMode = True
+    End Sub
+
+    ' Update Age Label when DOB changes
+    Private Sub dtpDOB_ValueChanged(sender As Object, e As EventArgs) Handles dtpDOB.ValueChanged
+        UpdateAgeLabel()
+    End Sub
+
+    ' Method to calculate and display age
+    Private Sub UpdateAgeLabel()
+        Dim birthDate As Date = dtpDOB.Value
+        Dim today As Date = Date.Today
+        Dim age As Integer = today.Year - birthDate.Year
+
+        If birthDate > today.AddYears(-age) Then
+            age -= 1
+        End If
+
+        lblAge.Text = "Age: " & age.ToString()
     End Sub
 
 End Class
